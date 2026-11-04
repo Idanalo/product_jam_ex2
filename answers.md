@@ -1,6 +1,6 @@
 # Answers
 
-**My variant:**
+**My variant:** big-three (4×4 board, three in a row wins)
 
 Answer each question in a few sentences, under the question. Put screenshots
 in a `screenshots/` folder and link them from your answers.
@@ -30,6 +30,31 @@ decides that? Where does the server get `owner_id` from, and why not from the
 request body?
 
 **Answer:**
+When a logged-in user creates an event, the flow proceeds through the following steps:
+1. **User interaction**: On `client/pages/events/EventNewPage.tsx`, the user enters event details (title, description, starts_at, image) into the form and clicks the "Create" button.
+2. **Form handling**: In `client/features/events/EventForm.tsx`, the `handleSubmit` event handler intercepts the submit event (`e.preventDefault()`), gathers form values, and invokes `onSubmit(values)` passed from `EventNewPage`.
+3. **Trigger mutation**: In `client/pages/events/EventNewPage.tsx`, `onSubmit` calls `createEvent.mutate(...)`, which is powered by `useCreateEvent()` from `client/features/events/hooks.ts`.
+4. **API call initiation**: In `client/features/events/hooks.ts`, `useCreateEvent()`'s mutation function calls `api<Event>("/api/events", { method: "POST", body: input })`.
+5. **Token attachment & HTTP request**: In `client/lib/api.ts`, `api()` gets the user's active session token using `supabase.auth.getSession()`, sets the `Authorization: Bearer <token>` and `Content-Type: application/json` headers, and executes `fetch("/api/events", ...)`.
+6. **Authentication middleware**: In `server/index.ts`, the Hono server routes incoming requests through `authMiddleware`. It extracts and validates the Bearer token with Supabase Auth, resolving the user's identity and setting `c.set("user", user)`.
+7. **Request validation**: In `server/routes/events.ts`, the `POST /` route is guarded by `validate("json", createEventSchema)` (from `server/lib/errors.ts`), validating the payload against `createEventSchema` in `shared/schemas/events.ts`.
+8. **Database insertion**: Inside the POST handler in `server/routes/events.ts`, the server creates an admin Supabase client via `createAdminClient(c.env)` and inserts the record into Supabase: `.insert({ ...input, owner_id: c.get("user").id }).select(COLUMNS).single()`.
+9. **Image URL resolution & HTTP response**: `server/routes/events.ts` calls `addImageUrls()` to generate temporary signed URLs for any attached image, returning HTTP 201 with the created event JSON.
+10. **Client cache update**: `api()` in `client/lib/api.ts` parses the JSON response. In `client/features/events/hooks.ts`, `useCreateEvent`'s `onSuccess` runs `queryClient.invalidateQueries({ queryKey: eventKeys.all })`. Any active query showing the events list (such as `useEvents()` on the events list page) automatically refetches the latest list from the server.
+11. **Toast & Navigation**: In `client/pages/events/EventNewPage.tsx`, `createEvent.mutate`'s `onSuccess` triggers `toast.add({ title: "Event created" })` and navigates to the new event's detail page with `navigate(`/events/${created.id}`)`.
+
+**If the title is only spaces:**
+In `shared/schemas/events.ts` (lines 35-38), `createEventSchema` defines:
+```ts
+title: z.string().trim().min(1, "Please enter a title").max(200, "The title is too long")
+```
+The `.trim()` transforms whitespace-only strings into an empty string `""`, and `.min(1, "Please enter a title")` fails validation.
+The `validate` middleware in `server/lib/errors.ts` catches this and calls `failValidation()`, which immediately answers with HTTP status `400 Bad Request` and error body:
+`{ "error": { "code": "invalid_input", "message": "Please enter a title", "fields": { "title": "Please enter a title" } } }`.
+
+**Where the server gets `owner_id` from and why not the request body:**
+The server gets `owner_id` from `c.get("user").id` in `server/routes/events.ts` (line 113), which was extracted directly from the cryptographically verified JWT token by the server's authentication middleware (`server/index.ts`).
+It does not take `owner_id` from the request body because the browser/client cannot be trusted: if the client could specify `owner_id`, any user could forge requests with someone else's user ID and create events under another person's account.
 
 ## 2. The rules
 
