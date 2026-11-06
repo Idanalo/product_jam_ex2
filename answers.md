@@ -67,6 +67,22 @@ gets, or return a new one? Why does it matter that your page and your server
 use the same pure functions?
 
 **Answer:**
+**Ways a game can end:**
+1. **Player X wins:** X achieves 3-in-a-row across any of the 24 possible winning lines on the 4×4 grid (8 horizontal lines, 8 vertical lines, 4 main diagonal lines, and 4 anti-diagonal lines).
+2. **Player O wins:** O achieves 3-in-a-row across any of the 24 winning lines.
+3. **Draw:** All 16 cells are filled and neither player has achieved 3-in-a-row.
+
+**Ways a move can be wrong:**
+1. **Out of bounds:** Cell index is not an integer between `0` and `15`.
+2. **Occupied cell:** The cell index is already occupied by 'X' or 'O'.
+3. **Game already ended:** Attempting to make a move when a player has already won or all 16 cells are full.
+4. **Extra moves / move sequence order:** On server replay, moves played out of alternating order (e.g. same player twice in a row) or moves appended after a winning move occurred.
+
+**Game function & Immutability:**
+The function `applyMove(game: Readonly<GameState>, cellIndex: number): GameState` in `shared/game/index.ts` takes the current game state and a move index and returns the new game state. It **does not mutate** the game object it receives; it returns a brand new `GameState` object with a copied board array (`[...game.board]`), adhering to functional immutability principles.
+
+**Why using the same pure functions matters:**
+The server must never trust the browser. By sharing the exact same pure functions between `client/` and `server/`, both sides share a single source of truth for the game rules. If the browser and server implemented the rules separately, discrepancies (such as a missed diagonal or mismatched win conditions) would result in bugs where valid moves are rejected by the server or fraudulent/illegal moves are accepted into the database. Pure functions have no external dependencies (DOM, React, database), ensuring identical deterministic evaluation in both environments.
 
 ## 3. Cheating
 
@@ -77,6 +93,14 @@ Why does the server check the moves itself, if your own page always sends
 correct games? Which status code did your server answer, and why that one?
 
 **Answer:**
+*(Screenshot: `screenshots/cheating_response.png`)*
+
+**Why the server checks the moves itself:**
+The fundamental rule of backend security is that **the server must never trust the browser**. Even if our React frontend code always behaves and sends only finished games, any user can bypass the UI entirely — opening browser devtools, using `fetch()` in the console, or sending a `curl` command with forged data like `{ "moves": [0, 1] }` claiming a 2-move win. By replaying the move sequence step-by-step from move 0 with pure functions, the server verifies that every move was legal, turns strictly alternated, and the game genuinely concluded as claimed before recording anything to the database.
+
+**Status code answered:**
+The server answers with **`400 Bad Request`** (with error code `"invalid_game"` and message explaining why the moves are illegal, such as `"A game requires at least 5 moves to conclude"` or `"The game is not finished yet"`).
+HTTP status `400` is the standard status code indicating that the client sent a malformed or semantically illegal payload that violates domain rules.
 
 ## 4. Someone else's games
 
@@ -88,6 +112,19 @@ How does your server know whose games to send? Which line in your code makes
 sure B never gets A's games, and what would B see without it?
 
 **Answer:**
+*(Screenshot: `screenshots/user_b_games.png`)*
+
+**How the server knows whose games to send:**
+When the browser sends `GET /api/games`, `client/lib/api.ts` attaches the user's JWT access token in the `Authorization: Bearer <token>` header. The server's `authMiddleware` (`server/middleware/auth.ts`) cryptographically verifies the token against Supabase Auth, determines the user identity, and attaches it to the request context via `c.set("user", user)`. The route handler then extracts `c.get("user").id`.
+
+**The line that enforces isolation:**
+In `server/routes/games.ts` (line 16):
+```ts
+.eq("owner_id", c.get("user").id)
+```
+
+**What User B would see without it:**
+The server uses the service role admin key to talk to Supabase, which bypasses Row Level Security. Without the `.eq("owner_id", c.get("user").id)` filter, the database query would return all rows from the `games` table, allowing User B to see all of User A's (and every other user's) saved games.
 
 ## 5. When NASA fails
 
