@@ -151,7 +151,9 @@ you "won" in 2 moves. Screenshot what your server answers.
 Why does the server check the moves itself, if your own page always sends
 correct games? Which status code did your server answer, and why that one?
 
-**Answer:** _(Screenshot: `screenshots/cheating_response.png`)_
+**Answer:**
+
+![Cheating Response](screenshots/cheating_response.png)
 
 **Why the server checks the moves itself:** The fundamental rule of backend
 security is that **the server must never trust the browser**. Even if our React
@@ -179,7 +181,9 @@ answered.
 How does your server know whose games to send? Which line in your code makes
 sure B never gets A's games, and what would B see without it?
 
-**Answer:** _(Screenshot: `screenshots/user_b_games.png`)_
+**Answer:**
+
+![User B Games](screenshots/user_b_games.png)
 
 **How the server knows whose games to send:** When the browser sends
 `GET /api/games`, `client/lib/api.ts` attaches the user's JWT access token in
