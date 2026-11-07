@@ -112,7 +112,9 @@ export function applyMove(
   cellIndex: number,
 ): GameState {
   if (game.result !== null) {
-    throw new GameRuleError("Cannot make a move in a game that has already ended.");
+    throw new GameRuleError(
+      "Cannot make a move in a game that has already ended.",
+    );
   }
 
   if (
@@ -121,7 +123,9 @@ export function applyMove(
     cellIndex < 0 ||
     cellIndex >= TOTAL_CELLS
   ) {
-    throw new GameRuleError(`Invalid cell index: ${cellIndex}. Must be 0..${TOTAL_CELLS - 1}.`);
+    throw new GameRuleError(
+      `Invalid cell index: ${cellIndex}. Must be 0..${TOTAL_CELLS - 1}.`,
+    );
   }
 
   if (game.board[cellIndex] !== null) {
@@ -173,7 +177,9 @@ export function replayGame(moves: readonly number[]): {
   winningLine: [number, number, number] | null;
 } {
   if (!Array.isArray(moves) || moves.length === 0) {
-    throw new GameRuleError("A game must contain at least 5 moves to be won or 16 moves to draw.");
+    throw new GameRuleError(
+      "A game must contain at least 5 moves to be won or 16 moves to draw.",
+    );
   }
 
   let state = createInitialGame();

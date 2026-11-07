@@ -14,7 +14,11 @@ function MiniBoard({ moves }: { moves: number[] }) {
   const win = findWinningLine(board);
 
   return (
-    <div className={styles.miniBoard} aria-hidden="true" title={`Final board after ${moves.length} moves`}>
+    <div
+      className={styles.miniBoard}
+      aria-hidden="true"
+      title={`Final board after ${moves.length} moves`}
+    >
       {board.map((cell, idx) => {
         const isWin = win?.line.includes(idx);
         return (
@@ -65,7 +69,8 @@ export default function TicTacToePage() {
               onSuccess: () => {
                 toast.add({
                   title: "Game saved",
-                  description: "The result was verified by the server and saved to your history.",
+                  description:
+                    "The result was verified by the server and saved to your history.",
                 });
               },
               onError: (err) => {
@@ -93,7 +98,8 @@ export default function TicTacToePage() {
     gameState.winningLine?.includes(index) ?? false;
 
   // Calculate coordinates for the animated SVG strike line across the 3 winning tiles
-  let strikeCoords: { x1: number; y1: number; x2: number; y2: number } | null = null;
+  let strikeCoords: { x1: number; y1: number; x2: number; y2: number } | null =
+    null;
   if (gameState.winningLine) {
     const [a, , c] = gameState.winningLine;
     const ra = Math.floor(a / 4);
@@ -185,8 +191,8 @@ export default function TicTacToePage() {
                 }
                 aria-label={`Cell ${idx}, ${cell ?? "empty"}`}
               >
-                {cell ?? (
-                  hoveredCell === idx &&
+                {cell ??
+                  (hoveredCell === idx &&
                   gameState.result === null &&
                   !saveGame.isPending ? (
                     <span
@@ -196,8 +202,7 @@ export default function TicTacToePage() {
                     >
                       {gameState.turn}
                     </span>
-                  ) : null
-                )}
+                  ) : null)}
               </button>
             ))}
           </div>
@@ -266,7 +271,9 @@ export default function TicTacToePage() {
                               : styles.badgeDraw
                         }`}
                       >
-                        {g.result === "draw" ? "Draw" : `Player ${g.result} Won`}
+                        {g.result === "draw"
+                          ? "Draw"
+                          : `Player ${g.result} Won`}
                       </span>
                       <span>{g.moves.length} moves</span>
                     </div>

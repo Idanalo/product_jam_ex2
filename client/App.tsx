@@ -23,6 +23,7 @@ const BlankDemoPage = lazy(() => import("./pages/demos/BlankDemoPage"));
 const ElementsDemoPage = lazy(() => import("./pages/demos/ElementsDemoPage"));
 const VizDemoPage = lazy(() => import("./pages/demos/VizDemoPage"));
 const TicTacToePage = lazy(() => import("./pages/tictactoe/TicTacToePage"));
+const NasaPage = lazy(() => import("./pages/nasa/NasaPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 // Holds the data fetched from the server, so two pages asking for the same
@@ -93,6 +94,7 @@ export function App() {
                           path="/tic-tac-toe"
                           element={<TicTacToePage />}
                         />
+                        <Route path="/nasa" element={<NasaPage />} />
                       </Route>
 
                       {/* The component gallery and the demos. Set
