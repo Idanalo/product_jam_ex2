@@ -296,6 +296,7 @@ We considered whether `apod_translations` should be scoped per-user with an
      screens wider than 768px, while preserving the 46px rounded container,
      brand colors (`#3870b7`, `#ea383a`, `#0ea94b`), and Google Fonts
      (`Fredoka`, `Rubik`).
+   - _Typography & Vector Assets:_ The designer's Figma file utilized a commercial Hebrew font (`Narkiss Block Condensed TRIAL`). To guarantee pixel-perfect visual fidelity across all browsers and devices without font rendering artifacts or requiring proprietary local font installations, we exported each typographic section directly from Figma as vector SVGs (`header-jam.svg`, `header-tagline.svg`, `ruti-title.svg`, `pain-points-block.svg`, `section-benefits.svg`, `pro-emergency.svg`, `pro-walk.svg`, `pro-grandchild.svg`, `pro-languages.svg`, and `footer-credits.svg`) and paired them with accessible semantic HTML, aria labels, and responsive CSS grid wrappers.
 
 6. **Homepage Navigation & Overview (Part 4)**:
    - _Original Design:_ Starter kit placeholder content with placeholder text

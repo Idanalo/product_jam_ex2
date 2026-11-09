@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Rubik:wght@300;400;500;600&display=swap");
+
 /* GrannyGo Design System & Page Styles */
 .pageContainer {
   background-color: #3870b7;
   color: #ffffff;
-  font-family: "Narkiss Block Condensed TRIAL", "Narkiss Block Condensed", "Heebo", "Rubik", system-ui, sans-serif;
+  font-family: "Narkiss Block Condensed TRIAL", "Narkiss Block", "Rubik", "Heebo", system-ui, sans-serif;
   direction: rtl;
   min-height: 100vh;
   display: flex;
@@ -14,6 +16,20 @@
   box-sizing: border-box;
 }
 
+/* Accessibility screen-reader only class */
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Header Section */
 .header {
   width: 100%;
   max-width: 600px;
@@ -22,20 +38,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.65rem;
   box-sizing: border-box;
 }
 
-.superTitle {
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: 0.6px;
-  color: rgba(255, 255, 255, 0.95);
-  margin: 0;
+.headerJamImg {
+  width: 100%;
+  max-width: 190px;
+  height: auto;
+  display: block;
 }
 
 .appLogo {
-  font-family: "Fredoka", sans-serif;
+  font-family: "Fredoka", cursive, sans-serif;
   font-size: clamp(3.2rem, 11vw, 4.6rem);
   font-weight: 600;
   color: #ffffff;
@@ -44,15 +59,14 @@
   letter-spacing: -0.5px;
 }
 
-.subTitle {
-  font-size: clamp(1.2rem, 4vw, 1.55rem);
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.95);
-  margin: 0;
-  letter-spacing: 0.3px;
+.headerTaglineImg {
+  width: 100%;
+  max-width: 333px;
+  height: auto;
+  display: block;
 }
 
-/* White Content Sheet with rounded corners (border-radius: 46px) */
+/* Main White Content Sheet with rounded corners (border-radius: 46px) */
 .whiteSheet {
   background: #ffffff;
   color: #3870b7;
@@ -79,12 +93,11 @@
   width: 100%;
 }
 
-.characterHeading {
-  font-size: 1.55rem;
-  font-weight: 400;
-  color: #3870b7;
-  margin: 0;
-  letter-spacing: 0.2px;
+.rutiTitleImg {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  display: block;
 }
 
 .avatarWrapper {
@@ -109,67 +122,29 @@
   width: 100%;
 }
 
-.painPoints,
+.painPoints {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.painPointsImg {
+  width: 100%;
+  max-width: 216px;
+  height: auto;
+  display: block;
+}
+
 .benefits {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   width: 100%;
-  gap: 0.85rem;
 }
 
-.sectionTitle {
-  font-size: 1.55rem;
-  font-weight: 400;
-  color: #3870b7;
-  margin: 0;
-  line-height: 1.25;
-  text-align: center;
-}
-
-.sectionTitle em {
-  font-style: normal;
-  font-family: "Fredoka", sans-serif;
-  font-weight: 600;
-}
-
-/* Lists aligned strictly to the right so X and V forms align vertically */
-.painList,
-.benefitList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* In RTL flex-start is the RIGHT edge */
-  gap: 0.65rem;
-}
-
-.painItem {
-  color: #ea383a;
-  font-size: 1.35rem;
-  font-weight: 300;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.benefitItem {
-  color: #3870b7;
-  font-size: 1.35rem;
-  font-weight: 300;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.65rem;
-}
-
-.statusIcon {
-  width: 15px;
-  height: 19px;
-  flex-shrink: 0;
-  object-fit: contain;
+.benefitsImg {
+  width: 100%;
+  max-width: 312px;
+  height: auto;
   display: block;
 }
 
@@ -183,8 +158,9 @@
 }
 
 .voiceTitle {
-  font-size: 1.55rem;
-  font-weight: 400;
+  font-family: "Narkiss Block Condensed TRIAL", "Narkiss Block", "Rubik", sans-serif;
+  font-size: clamp(1.4rem, 4.5vw, 1.85rem);
+  font-weight: 500;
   color: #3870b7;
   text-align: center;
   margin: 0;
@@ -215,7 +191,7 @@
   opacity: 0.85;
 }
 
-/* Feature Highlights Grid */
+/* Feature Highlights Grid (The 4 Pros) */
 .featuresGrid {
   display: flex;
   flex-direction: column;
@@ -229,49 +205,36 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  max-width: 320px;
+  width: 100%;
+  max-width: 345px;
 }
 
-.featureIconWrapper {
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.featureIcon {
-  max-height: 64px;
-  width: auto;
+.proCardImg {
+  width: 100%;
+  max-width: 345px;
+  height: auto;
   display: block;
-}
-
-.featureTitle {
-  font-size: 1.55rem;
-  font-weight: 400;
-  color: #3870b7;
-  margin: 0;
-}
-
-.featureDesc {
-  font-size: 1.35rem;
-  color: #3870b7;
-  margin: 0;
-  line-height: 1.4;
-  font-weight: 300;
 }
 
 /* Footer */
 .footer {
   background-color: #3870b7;
   color: rgba(255, 255, 255, 0.95);
-  padding: 1.5rem 1.5rem 3rem;
+  padding: 2rem 1.5rem 3rem;
   text-align: center;
-  font-size: 1.05rem;
-  font-weight: 400;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footerCreditsImg {
+  width: 100%;
+  max-width: 318px;
+  height: auto;
+  display: block;
 }
 
 /* Responsive adjustments for Tablet and Desktop */
@@ -285,15 +248,18 @@
   .comparisonSection {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: flex-start;
+    gap: 2.5rem;
+    align-items: center;
+    justify-items: center;
   }
 
   .featuresGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3.5rem 2.5rem;
-    max-width: 660px;
+    gap: 3.5rem 2rem;
+    max-width: 680px;
+    align-items: start;
+    justify-items: center;
   }
 
   .featureCard {
@@ -305,5 +271,10 @@
   .whiteSheet {
     max-width: 860px;
     padding: 4rem 4.5rem 5rem;
+  }
+
+  .featuresGrid {
+    max-width: 740px;
+    gap: 4rem 2.5rem;
   }
 }
