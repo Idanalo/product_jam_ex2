@@ -1,17 +1,20 @@
+import chatDivider from "./assets/chat-divider.svg";
+import chatGroup1 from "./assets/chat-group-1.svg";
+import chatGroup2 from "./assets/chat-group-2.svg";
+import chatGroup3 from "./assets/chat-group-3.svg";
 import iconEmergency from "./assets/icon-emergency.svg";
 import iconGrandchild from "./assets/icon-grandchild.svg";
 import iconLanguages from "./assets/icon-languages.svg";
+import iconV from "./assets/icon-v.svg";
 import iconWalk from "./assets/icon-walk.svg";
+import iconX from "./assets/icon-x.svg";
 import rutiAvatar from "./assets/ruti-avatar.svg";
 import styles from "./DesignPage.module.css";
 
 /**
  * GrannyGo Design Page: Product Jam Exercise 2 (Part 3)
- * Implemented from the designer's Figma mobile screen specification
+ * Pixel-accurate implementation from the designer's Figma specification
  * with full responsiveness across phone, tablet, and desktop viewports.
- *
- * Publicly accessible without requiring authentication so designers and collaborators
- * can view and test it directly.
  */
 export default function DesignPage() {
   return (
@@ -45,11 +48,22 @@ export default function DesignPage() {
         <section className={styles.comparisonSection}>
           {/* Pain Points (Waze) */}
           <div className={styles.painPoints}>
-            <h3 className={styles.sectionTitle}>...רותי פותחת את waze, ו</h3>
+            <h3 className={styles.sectionTitle}>
+              רותי פותחת את waze, ו...
+            </h3>
             <ul className={styles.painList}>
-              <li className={styles.painItem}>הטקסט קטן והמסך עמוס</li>
-              <li className={styles.painItem}>ההוראות מהירות מדי</li>
-              <li className={styles.painItem}>נשלחת לכבישים מהירים</li>
+              <li className={styles.painItem}>
+                <img src={iconX} alt="X" className={styles.statusIcon} />
+                <span>הטקסט קטן והמסך עמוס</span>
+              </li>
+              <li className={styles.painItem}>
+                <img src={iconX} alt="X" className={styles.statusIcon} />
+                <span>ההוראות מהירות מדי</span>
+              </li>
+              <li className={styles.painItem}>
+                <img src={iconX} alt="X" className={styles.statusIcon} />
+                <span>נשלחת לכבישים מהירים</span>
+              </li>
             </ul>
           </div>
 
@@ -61,9 +75,18 @@ export default function DesignPage() {
               רותי מנווטת בפשטות ובטחון
             </h3>
             <ul className={styles.benefitList}>
-              <li className={styles.benefitItem}>טקסט גדול וברור</li>
-              <li className={styles.benefitItem}>קול רגוע ואיטי, והתראה מוקדמת</li>
-              <li className={styles.benefitItem}>הדרך המוכרת והרגועה</li>
+              <li className={styles.benefitItem}>
+                <img src={iconV} alt="V" className={styles.statusIcon} />
+                <span>טקסט גדול וברור</span>
+              </li>
+              <li className={styles.benefitItem}>
+                <img src={iconV} alt="V" className={styles.statusIcon} />
+                <span>קול רגוע ואיטי, והתראה מוקדמת</span>
+              </li>
+              <li className={styles.benefitItem}>
+                <img src={iconV} alt="V" className={styles.statusIcon} />
+                <span>הדרך המוכרת והרגועה</span>
+              </li>
             </ul>
           </div>
         </section>
@@ -74,29 +97,31 @@ export default function DesignPage() {
             ממשק קולי - פחות לגעת, יותר לדבר
           </h2>
 
-          <div className={styles.chatContainer}>
-            {/* Conversation 1 */}
-            <div className={styles.chatGroup}>
-              <span className={styles.bubbleBlue}>לאן נוסעים היום?</span>
-              <span className={styles.bubbleGreen}>קפה עם רחל</span>
-            </div>
+          <div className={styles.chatWrapper}>
+            {/* Conversation 1: לאן נוסעים היום? (Blue / Left) -> קפה עם רחל (Green / Right) */}
+            <img
+              src={chatGroup1}
+              alt="לאן נוסעים היום? - קפה עם רחל"
+              className={styles.chatGroupImg}
+            />
 
-            <hr className={styles.chatDivider} />
+            <img src={chatDivider} alt="" className={styles.chatDividerImg} />
 
-            {/* Conversation 2 */}
-            <div className={styles.chatGroup}>
-              <span className={styles.bubbleBlue}>בעוד 500 מטר פני ימינה</span>
-              <span className={styles.bubbleGreen}>אפשר שוב?</span>
-              <span className={styles.bubbleBlue}>בעוד 400 מטר פני ימינה</span>
-            </div>
+            {/* Conversation 2: בעוד 500 מטר (Blue / Left) -> אפשר שוב? (Green / Right) -> בעוד 400 מטר (Blue / Left) */}
+            <img
+              src={chatGroup2}
+              alt="בעוד 500 מטר פני ימינה - אפשר שוב? - בעוד 400 מטר פני ימינה"
+              className={styles.chatGroupImg}
+            />
 
-            <hr className={styles.chatDivider} />
+            <img src={chatDivider} alt="" className={styles.chatDividerImg} />
 
-            {/* Conversation 3 */}
-            <div className={styles.chatGroup}>
-              <span className={styles.bubbleGreen}>נתקעתי</span>
-              <span className={styles.bubbleBlue}>מחייגת ל״ידידים״</span>
-            </div>
+            {/* Conversation 3: נתקעתי (Green / Right) -> מחייגת ל״ידידים״ (Blue / Left) */}
+            <img
+              src={chatGroup3}
+              alt="נתקעתי - מחייגת ל״ידידים״"
+              className={styles.chatGroupImg}
+            />
           </div>
         </section>
 

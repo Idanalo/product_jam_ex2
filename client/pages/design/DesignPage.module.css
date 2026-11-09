@@ -2,7 +2,7 @@
 .pageContainer {
   background-color: #3870b7;
   color: #ffffff;
-  font-family: "Rubik", system-ui, -apple-system, sans-serif;
+  font-family: "Narkiss Block Condensed TRIAL", "Narkiss Block Condensed", "Heebo", "Rubik", system-ui, sans-serif;
   direction: rtl;
   min-height: 100vh;
   display: flex;
@@ -17,43 +17,42 @@
 .header {
   width: 100%;
   max-width: 600px;
-  padding: 2.5rem 1.5rem 1.5rem;
+  padding: 2.25rem 1.5rem 1.25rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   box-sizing: border-box;
 }
 
 .superTitle {
   font-size: 1.1rem;
   font-weight: 400;
-  letter-spacing: 0.5px;
-  color: rgba(255, 255, 255, 0.92);
+  letter-spacing: 0.6px;
+  color: rgba(255, 255, 255, 0.95);
   margin: 0;
 }
 
 .appLogo {
-  font-family: "Fredoka", "Rubik", sans-serif;
-  font-size: clamp(3.2rem, 11vw, 4.8rem);
+  font-family: "Fredoka", sans-serif;
+  font-size: clamp(3.2rem, 11vw, 4.6rem);
   font-weight: 600;
   color: #ffffff;
-  margin: 0.35rem 0;
+  margin: 0.25rem 0;
   line-height: 1.05;
   letter-spacing: -0.5px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .subTitle {
-  font-size: clamp(1.15rem, 4vw, 1.5rem);
+  font-size: clamp(1.2rem, 4vw, 1.55rem);
   font-weight: 300;
   color: rgba(255, 255, 255, 0.95);
   margin: 0;
   letter-spacing: 0.3px;
 }
 
-/* White Content Sheet with rounded corners */
+/* White Content Sheet with rounded corners (border-radius: 46px) */
 .whiteSheet {
   background: #ffffff;
   color: #3870b7;
@@ -82,7 +81,7 @@
 
 .characterHeading {
   font-size: 1.55rem;
-  font-weight: 600;
+  font-weight: 400;
   color: #3870b7;
   margin: 0;
   letter-spacing: 0.2px;
@@ -115,25 +114,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   width: 100%;
-  gap: 0.9rem;
+  gap: 0.85rem;
 }
 
 .sectionTitle {
-  font-size: 1.45rem;
-  font-weight: 600;
+  font-size: 1.55rem;
+  font-weight: 400;
   color: #3870b7;
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.25;
+  text-align: center;
 }
 
 .sectionTitle em {
   font-style: normal;
-  font-family: "Fredoka", "Rubik", sans-serif;
+  font-family: "Fredoka", sans-serif;
   font-weight: 600;
 }
 
+/* Lists aligned strictly to the right so X and V forms align vertically */
 .painList,
 .benefitList {
   list-style: none;
@@ -141,42 +141,36 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* In RTL flex-start is the RIGHT edge */
   gap: 0.65rem;
-  width: 100%;
 }
 
 .painItem {
   color: #ea383a;
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: 1.35rem;
+  font-weight: 300;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.6rem;
-  letter-spacing: 0.2px;
-}
-
-.painItem::before {
-  content: "✕";
-  font-weight: 700;
-  font-size: 1.15rem;
+  gap: 0.65rem;
 }
 
 .benefitItem {
   color: #3870b7;
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: 1.35rem;
+  font-weight: 300;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 0.6rem;
-  letter-spacing: 0.2px;
+  gap: 0.65rem;
 }
 
-.benefitItem::before {
-  content: "✔";
-  color: #0ea94b;
-  font-weight: 700;
-  font-size: 1.15rem;
+.statusIcon {
+  width: 15px;
+  height: 19px;
+  flex-shrink: 0;
+  object-fit: contain;
+  display: block;
 }
 
 /* Voice Interface (Chat) */
@@ -190,62 +184,35 @@
 
 .voiceTitle {
   font-size: 1.55rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #3870b7;
   text-align: center;
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.25;
 }
 
-.chatContainer {
+.chatWrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 1.25rem;
   width: 100%;
-  max-width: 320px;
+  max-width: 310px;
 }
 
-.chatGroup {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+.chatGroupImg {
   width: 100%;
+  max-width: 293px;
+  height: auto;
+  display: block;
 }
 
-.chatDivider {
-  border: none;
-  border-top: 2px dashed #3870b7;
-  opacity: 0.35;
-  margin: 0.25rem 0;
+.chatDividerImg {
   width: 100%;
-}
-
-.bubbleBlue {
-  background-color: #3870b7;
-  color: #ffffff;
-  padding: 0.55rem 1.25rem;
-  border-radius: 20px 4px 20px 20px;
-  font-size: 1.25rem;
-  font-weight: 400;
-  align-self: flex-start;
-  display: inline-block;
-  box-shadow: 0 3px 10px rgba(56, 112, 183, 0.25);
-  line-height: 1.4;
-  letter-spacing: 0.2px;
-}
-
-.bubbleGreen {
-  background-color: #0ea94b;
-  color: #ffffff;
-  padding: 0.55rem 1.25rem;
-  border-radius: 4px 20px 20px 20px;
-  font-size: 1.25rem;
-  font-weight: 400;
-  align-self: flex-end;
-  display: inline-block;
-  box-shadow: 0 3px 10px rgba(14, 169, 75, 0.25);
-  line-height: 1.4;
-  letter-spacing: 0.2px;
+  max-width: 293px;
+  height: auto;
+  display: block;
+  opacity: 0.85;
 }
 
 /* Feature Highlights Grid */
@@ -263,7 +230,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-  max-width: 310px;
+  max-width: 320px;
 }
 
 .featureIconWrapper {
@@ -280,14 +247,14 @@
 }
 
 .featureTitle {
-  font-size: 1.45rem;
-  font-weight: 700;
+  font-size: 1.55rem;
+  font-weight: 400;
   color: #3870b7;
   margin: 0;
 }
 
 .featureDesc {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   color: #3870b7;
   margin: 0;
   line-height: 1.4;
@@ -297,10 +264,10 @@
 /* Footer */
 .footer {
   background-color: #3870b7;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   padding: 1.5rem 1.5rem 3rem;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 400;
   width: 100%;
   box-sizing: border-box;
@@ -320,10 +287,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: flex-start;
-  }
-
-  .chatContainer {
-    max-width: 440px;
   }
 
   .featuresGrid {
