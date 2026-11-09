@@ -6,72 +6,115 @@ import styles from "./HomePage.module.css";
 
 type Me = { id: string; email: string };
 
-/**
- * The home page. Replace all of this with your own app.
- *
- * Once you are logged in, it shows the two halves of the system talking to
- * each other: the browser knows who you are from Supabase, and /api/me
- * proves the SERVER agrees - it checked your token before answering.
- */
 export default function HomePage() {
   const { user } = useAuth();
 
   const meQuery = useQuery({
     queryKey: ["me"],
     queryFn: () => api<Me>("/api/me"),
-    // Only ask once we know somebody is logged in.
     enabled: Boolean(user),
   });
 
   return (
-    <main>
-      <h2>Welcome to the Product Jam Starter Kit</h2>
-      <p>
-        Feel free to look around, edit the source code and navigate to the
-        demos. This page is client/pages/home/HomePage.tsx.
-      </p>
+    <main className={styles.container}>
+      <header className={styles.hero}>
+        <h1 className={styles.title}>Product Jam Web Application</h1>
+        <p className={styles.subtitle}>
+          A full-stack web application built with React, Cloudflare Workers,
+          Supabase, and Google Gemini AI for Exercise 2.
+        </p>
 
-      <div className={styles.logos}>
-        <img src="/huji.svg" alt="HUJI Logo" width="80" height="80" />
-        <img src="/bezalel.svg" alt="Bezalel Logo" width="80" height="80" />
-      </div>
+        <div className={styles.logos}>
+          <img src="/huji.svg" alt="HUJI Logo" width="70" height="70" />
+          <img src="/bezalel.svg" alt="Bezalel Logo" width="70" height="70" />
+        </div>
+      </header>
 
       {user ? (
-        <>
+        <section className={styles.userBanner}>
           <p>
-            The server knows you as:{" "}
+            Logged in as:{" "}
             <strong>
               {meQuery.isPending
-                ? "Checking..."
+                ? "Verifying session with server..."
                 : meQuery.isError
-                  ? "Error"
+                  ? user.email
                   : meQuery.data.email}
             </strong>
           </p>
           <p>
-            <Link to="/events">My events</Link>
+            <Link to="/events">View Sample Events &rarr;</Link>
           </p>
-        </>
+        </section>
       ) : null}
 
-      <h2>Lorem Ipsum</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus
-        sit amet nunc nec vehicula. Fusce ornare nec nulla non imperdiet. Fusce
-        vel sodales justo. Sed efficitur arcu lorem, at iaculis odio ultricies
-        et. Duis rutrum urna nec elit bibendum, sed hendrerit nulla posuere.
-        Vestibulum vestibulum, ante non tincidunt posuere, dui arcu lacinia
-        nisl, nec rhoncus massa arcu ac ipsum. Nam congue interdum tortor, eu
-        dignissim massa scelerisque vitae.
-      </p>
-      <ul>
-        <li>
-          Aliquam maximus tellus sed lacus venenatis, ac cursus eros mollis.
-        </li>
-        <li>In id ante sed sem pharetra molestie et vitae arcu.</li>
-        <li>Cras pharetra turpis at pretium elementum.</li>
-        <li>Donec ultrices felis vel lectus auctor iaculis.</li>
-      </ul>
+      <section className={styles.grid}>
+        {/* Part 1: Tic-tac-toe */}
+        <article className={styles.card}>
+          <div>
+            <div className={styles.cardHeader}>
+              <span className={styles.cardTag}>Part 1</span>
+            </div>
+            <h2 className={styles.cardTitle}>Tic-tac-toe</h2>
+            <p className={styles.cardDescription}>
+              Play the 4×4 Big-Three tic-tac-toe variant (three-in-a-row wins).
+              Moves are strictly replayed and verified server-side with zero trust.
+            </p>
+            <ul className={styles.cardFeatures}>
+              <li>Custom 4×4 board with pure rule evaluation</li>
+              <li>Server-side move replay & cheat prevention</li>
+              <li>Personal game match history with visual board snapshots</li>
+            </ul>
+          </div>
+          <Link to="/tic-tac-toe" className={styles.cardButton}>
+            Play Tic-tac-toe &rarr;
+          </Link>
+        </article>
+
+        {/* Part 2: Space Pictures */}
+        <article className={styles.card}>
+          <div>
+            <div className={styles.cardHeader}>
+              <span className={styles.cardTag}>Part 2</span>
+            </div>
+            <h2 className={styles.cardTitle}>Space Pictures</h2>
+            <p className={styles.cardDescription}>
+              Browse NASA Astronomy Picture of the Day (APOD) photos with
+              AI-generated Hebrew summaries for 10-year-olds and thematic tags.
+            </p>
+            <ul className={styles.cardFeatures}>
+              <li>NASA APOD API integration via secure Cloudflare backend</li>
+              <li>Google Gemini AI Hebrew explanations with structured JSON</li>
+              <li>Supabase global database caching to avoid duplicate queries</li>
+            </ul>
+          </div>
+          <Link to="/nasa" className={styles.cardButton}>
+            Explore Space Pictures &rarr;
+          </Link>
+        </article>
+
+        {/* Part 3: Design to Code */}
+        <article className={styles.card}>
+          <div>
+            <div className={styles.cardHeader}>
+              <span className={styles.cardTag}>Part 3</span>
+            </div>
+            <h2 className={styles.cardTitle}>Design to Code</h2>
+            <p className={styles.cardDescription}>
+              Mobile-first responsive webpage implemented in collaboration with a
+              designer partner from Figma into production code.
+            </p>
+            <ul className={styles.cardFeatures}>
+              <li>Built directly from Figma design specifications</li>
+              <li>Responsive across mobile, tablet, and desktop</li>
+              <li>Publicly accessible without login for rapid design review</li>
+            </ul>
+          </div>
+          <Link to="/design" className={styles.cardButton}>
+            View Design &rarr;
+          </Link>
+        </article>
+      </section>
     </main>
   );
 }

@@ -1,3 +1,346 @@
-.title {
-  font-size: var(--text-3xl);
+/* GrannyGo Design System & Page Styles */
+.pageContainer {
+  background-color: #3870b7;
+  color: #ffffff;
+  font-family: "Rubik", system-ui, -apple-system, sans-serif;
+  direction: rtl;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  max-width: 600px;
+  padding: 2.5rem 1.5rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  box-sizing: border-box;
+}
+
+.superTitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+}
+
+.appLogo {
+  font-family: "Fredoka", "Rubik", sans-serif;
+  font-size: clamp(3.2rem, 11vw, 4.8rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0.35rem 0;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.subTitle {
+  font-size: clamp(1.15rem, 4vw, 1.5rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+/* White Content Sheet with rounded corners */
+.whiteSheet {
+  background: #ffffff;
+  color: #3870b7;
+  border-radius: 46px;
+  width: 100%;
+  max-width: 440px;
+  padding: 2.75rem 1.5rem 3.5rem;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  margin: 0.75rem auto 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  box-sizing: border-box;
+}
+
+/* Character Section: Ruti */
+.characterSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.characterHeading {
+  font-size: 1.55rem;
+  font-weight: 600;
+  color: #3870b7;
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.characterAvatar {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  display: block;
+}
+
+/* Comparison / Pain Points & Solution */
+.comparisonSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.75rem;
+  width: 100%;
+}
+
+.painPoints,
+.benefits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  gap: 0.9rem;
+}
+
+.sectionTitle {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #3870b7;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.sectionTitle em {
+  font-style: normal;
+  font-family: "Fredoka", "Rubik", sans-serif;
+  font-weight: 600;
+}
+
+.painList,
+.benefitList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.painItem {
+  color: #ea383a;
+  font-size: 1.3rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  letter-spacing: 0.2px;
+}
+
+.painItem::before {
+  content: "✕";
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.benefitItem {
+  color: #3870b7;
+  font-size: 1.3rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  letter-spacing: 0.2px;
+}
+
+.benefitItem::before {
+  content: "✔";
+  color: #0ea94b;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+/* Voice Interface (Chat) */
+.voiceSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1.75rem;
+}
+
+.voiceTitle {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #3870b7;
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 320px;
+}
+
+.chatGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.chatDivider {
+  border: none;
+  border-top: 2px dashed #3870b7;
+  opacity: 0.35;
+  margin: 0.25rem 0;
+  width: 100%;
+}
+
+.bubbleBlue {
+  background-color: #3870b7;
+  color: #ffffff;
+  padding: 0.55rem 1.25rem;
+  border-radius: 20px 4px 20px 20px;
+  font-size: 1.25rem;
+  font-weight: 400;
+  align-self: flex-start;
+  display: inline-block;
+  box-shadow: 0 3px 10px rgba(56, 112, 183, 0.25);
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+}
+
+.bubbleGreen {
+  background-color: #0ea94b;
+  color: #ffffff;
+  padding: 0.55rem 1.25rem;
+  border-radius: 4px 20px 20px 20px;
+  font-size: 1.25rem;
+  font-weight: 400;
+  align-self: flex-end;
+  display: inline-block;
+  box-shadow: 0 3px 10px rgba(14, 169, 75, 0.25);
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+}
+
+/* Feature Highlights Grid */
+.featuresGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.75rem;
+  width: 100%;
+  text-align: center;
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 310px;
+}
+
+.featureIconWrapper {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureIcon {
+  max-height: 64px;
+  width: auto;
+  display: block;
+}
+
+.featureTitle {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #3870b7;
+  margin: 0;
+}
+
+.featureDesc {
+  font-size: 1.25rem;
+  color: #3870b7;
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+/* Footer */
+.footer {
+  background-color: #3870b7;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem 1.5rem 3rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive adjustments for Tablet and Desktop */
+@media (min-width: 768px) {
+  .whiteSheet {
+    max-width: 760px;
+    padding: 3.5rem 3.5rem 4.5rem;
+    gap: 3.75rem;
+  }
+
+  .comparisonSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  .chatContainer {
+    max-width: 440px;
+  }
+
+  .featuresGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem 2.5rem;
+    max-width: 660px;
+  }
+
+  .featureCard {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .whiteSheet {
+    max-width: 860px;
+    padding: 4rem 4.5rem 5rem;
+  }
 }

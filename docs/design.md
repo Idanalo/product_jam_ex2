@@ -286,3 +286,20 @@ We considered whether `apod_translations` should be scoped per-user with an
      turn it is, an animated SVG strike-through line connecting the winning
      3-in-a-row tiles, and mini 4×4 board thumbnails in the user's game history
      list to visually show the final board state of each saved game.
+
+5. **GrannyGo Mobile Design and Responsive Desktop Layout (Part 3)**:
+   - _Original Design:_ The Figma specification provided an isolated
+     single-column mobile viewport (440px width) for the GrannyGo concept screen.
+   - _What Changed:_ To support tablet and desktop screens seamlessly without
+     distorting the mobile layout, the comparison sections (Waze pain points vs.
+     GrannyGo benefits) and key features reflow into balanced 2-column grids on
+     screens wider than 768px, while preserving the 46px rounded container,
+     brand colors (`#3870b7`, `#ea383a`, `#0ea94b`), and Google Fonts
+     (`Fredoka`, `Rubik`).
+
+6. **Homepage Navigation & Overview (Part 4)**:
+   - _Original Design:_ Starter kit placeholder content with placeholder text
+     and sample event links.
+   - _What Changed:_ Replaced with a unified overview dashboard showcasing
+     Tic-tac-toe (Part 1), Space Pictures (Part 2), and Design to Code (Part 3),
+     with direct navigation cards and global navbar integration.
