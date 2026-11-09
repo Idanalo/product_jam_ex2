@@ -6,7 +6,7 @@
     "node": ">=24"
   },
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite dev --host",
     "build": "vite build",
     "preview": "npm run build && vite preview",
     "deploy": "vite build && wrangler deploy -c dist/server/wrangler.json",
