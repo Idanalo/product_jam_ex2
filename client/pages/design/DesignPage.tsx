@@ -13,6 +13,7 @@ import proWalk from "./assets/pro-walk.svg";
 import rutiAvatar from "./assets/ruti-avatar.svg";
 import rutiTitle from "./assets/ruti-title.svg";
 import sectionBenefits from "./assets/section-benefits.svg";
+import voiceTitle from "./assets/voice-title.svg";
 import styles from "./DesignPage.module.css";
 
 /**
@@ -60,8 +61,8 @@ export default function DesignPage() {
               src={rutiAvatar}
               alt="איור של רותי, נהגת בת 75"
               className={styles.characterAvatar}
-              width="260"
-              height="232"
+              width="265"
+              height="233"
             />
           </div>
         </section>
@@ -99,9 +100,14 @@ export default function DesignPage() {
           className={styles.voiceSection}
           aria-label="ממשק קולי - פחות לגעת, יותר לדבר"
         >
-          <h2 className={styles.voiceTitle}>
-            ממשק קולי - פחות לגעת, יותר לדבר
-          </h2>
+          <h2 className={styles.srOnly}>ממשק קולי - פחות לגעת, יותר לדבר</h2>
+          <img
+            src={voiceTitle}
+            alt="ממשק קולי - פחות לגעת, יותר לדבר"
+            className={styles.voiceTitleImg}
+            width="375"
+            height="34"
+          />
 
           <div className={styles.chatWrapper}>
             {/* Conversation 1: לאן נוסעים היום? (Blue / Left) -> קפה עם רחל (Green / Right) */}
@@ -110,7 +116,7 @@ export default function DesignPage() {
               alt="שיחה ראשונה: לאן נוסעים היום? - קפה עם רחל"
               className={styles.chatGroupImg}
               width="293"
-              height="53"
+              height="87"
             />
 
             <img
@@ -127,7 +133,7 @@ export default function DesignPage() {
               alt="שיחה שניה: בעוד 500 מטר פני ימינה - אפשר שוב? - בעוד 400 מטר פני ימינה"
               className={styles.chatGroupImg}
               width="293"
-              height="93"
+              height="138"
             />
 
             <img
@@ -144,7 +150,7 @@ export default function DesignPage() {
               alt="שיחה שלישית: נתקעתי - מחייגת ל״ידידים״"
               className={styles.chatGroupImg}
               width="293"
-              height="53"
+              height="87"
             />
           </div>
         </section>
