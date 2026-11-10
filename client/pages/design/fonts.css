@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Narkiss Block Condensed TRIAL";
+  src: url("./fonts/NarkissBlockCondensed-Light-TRIAL.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Narkiss Block Condensed TRIAL";
+  src: url("./fonts/NarkissBlockCondensed-Regular-TRIAL.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Narkiss Block Condensed TRIAL";
+  src: url("./fonts/NarkissBlockCondensed-Medium-TRIAL.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Narkiss Block Condensed TRIAL";
+  src: url("./fonts/NarkissBlockCondensed-Semibold-TRIAL.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,18 @@
+<svg width="112" height="106" viewBox="0 0 112 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Center Pillar & Base -->
+  <path d="M56 14V94" stroke="#3870B7" stroke-width="4" stroke-linecap="round" />
+  <path d="M40 96C40 88 72 88 72 96" stroke="#3870B7" stroke-width="3.5" stroke-linecap="round" />
+  <path d="M30 98H82" stroke="#3870B7" stroke-width="4" stroke-linecap="round" />
+
+  <!-- Tilted Beam favoring Left (GrannyGo Pros in RTL) -->
+  <path d="M18 33L94 21" stroke="#3870B7" stroke-width="4" stroke-linecap="round" />
+  <circle cx="56" cy="27" r="5" fill="#FFFFFF" stroke="#3870B7" stroke-width="3.5" />
+
+  <!-- Left Pan (GrannyGo Pros - Lower / Stronger Weight) -->
+  <path d="M18 33L6 66M18 33L30 66" stroke="#3870B7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M4 66H32C32 74.5 26 80 18 80C10 80 4 74.5 4 66Z" fill="#3870B7" stroke="#3870B7" stroke-width="2" stroke-linejoin="round" />
+
+  <!-- Right Pan (Waze Cons - Higher / Lighter Weight) -->
+  <path d="M94 21L82 54M94 21L106 54" stroke="#3870B7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M80 54H108C108 62.5 102 68 94 68C86 68 80 62.5 80 54Z" fill="#DCE7F5" stroke="#3870B7" stroke-width="2.5" stroke-linejoin="round" />
+</svg>

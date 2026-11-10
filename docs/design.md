@@ -291,22 +291,34 @@ We considered whether `apod_translations` should be scoped per-user with an
    - _Original Design:_ The Figma specification provided an isolated
      single-column mobile viewport (440px width) for the GrannyGo concept
      screen.
-   - _What Changed:_ To support tablet and desktop screens seamlessly without
-     distorting the mobile layout, the comparison sections (Waze pain points vs.
-     GrannyGo benefits) and key features reflow into balanced 2-column grids on
-     screens wider than 768px, while preserving the 46px rounded container,
-     brand colors (`#3870b7`, `#ea383a`, `#0ea94b`), and Google Fonts
-     (`Fredoka`, `Rubik`).
-   - _Typography & Vector Assets:_ The designer's Figma file utilized a
-     commercial Hebrew font (`Narkiss Block Condensed TRIAL`). To guarantee
-     pixel-perfect visual fidelity across all browsers and devices without font
-     rendering artifacts or requiring proprietary local font installations, we
-     exported each typographic section directly from Figma as vector SVGs
-     (`header-jam.svg`, `header-tagline.svg`, `ruti-title.svg`,
-     `pain-points-block.svg`, `section-benefits.svg`, `voice-title.svg`,
-     `pro-emergency.svg`, `pro-walk.svg`, `pro-grandchild.svg`,
-     `pro-languages.svg`, and `footer-credits.svg`) and paired them with
-     accessible semantic HTML, aria labels, and responsive CSS grid wrappers.
+   - _What Changed:_ While preserving the exact 440px Figma mobile layout below
+     `768px`, `.whiteSheet` on tablet and desktop (`>= 768px`) stays a centered,
+     framed white document floating inside the `#3870b7` backdrop (stepping from
+     `960px` to `1080px` and `1140px`) rather than stretching edge-to-edge. At
+     the Ruti character level (`>= 768px`), an interactive Hebrew GrannyGo
+     product showcase (`DesktopNavShowcase` backed by `grannygo-map-bg.svg`,
+     hidden on mobile) sits beside Ruti's illustration with no vertical divider.
+     The comparison blocks (Waze pain points vs. GrannyGo benefits) sit in
+     matching `#FFF7F7` and `#F4F8FD` cards, flanked by a tilted blue vector
+     balance scale favoring GrannyGo (`comparison-scale.svg`, visible at
+     `>= 1024px`) with aligned heading scale (`26.62px`) so both comparison
+     sides match cleanly, the 3 voice conversation groups sit in a framed
+     `#f4f8fd` container on tablet (`768px–1023px`) before transitioning to a
+     3-column horizontal RTL row with vertical dashed dividers at `>= 1024px`,
+     the 4 feature highlights form a uniform 2×2 `.featureCard` grid (`#f4f8fd`
+     with subtle hover lift), wide desktops (`>= 1200px`) apply a proportional
+     scale bump across Ruti and paired comparison elements, and placeholder copy
+     in `client/lib/config.ts` and `client/pages/Layout.tsx` was updated to
+     match the Product Jam course site.
+   - _Typography & Live Text Rendering:_ Using the bundled
+     `Narkiss Block Condensed TRIAL` font weights (`Light 300`, `Regular 400`,
+     `Medium 500`, `Semibold 600`) loaded via `@font-face` in
+     `client/pages/design/fonts.css` together with Google Fonts `Fredoka`
+     (`600`) for the `GrannyGo` brand mark, all text across the header, Ruti
+     intro, Waze/GrannyGo comparison lists, voice chat speech bubbles (styled
+     pills with matched tail SVGs), feature cards, and footer is rendered as
+     live semantic HTML/CSS text at the exact Figma type scale (`17.75px`,
+     `26.62px`, `35.49px`), reserving SVGs solely for illustrations and icons.
 
 6. **Homepage Navigation & Overview (Part 4)**:
    - _Original Design:_ Starter kit placeholder content with placeholder text

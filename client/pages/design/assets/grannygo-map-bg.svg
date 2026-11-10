@@ -1,0 +1,19 @@
+<svg width="308" height="108" viewBox="0 0 308 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Subtle Background Grid Streets -->
+  <path d="M12 38H296M12 78H296M88 8V100M212 8V100" stroke="#DCE7F5" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Calm Road Base -->
+  <path d="M48 88C62 56 126 70 156 50C186 30 202 26 254 26" stroke="#D5E3F5" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Active Safe GrannyGo Green Route -->
+  <path d="M48 88C62 56 126 70 156 50C186 30 202 26 254 26" stroke="#0EA94B" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Start Car Marker -->
+  <circle cx="48" cy="88" r="11" fill="#3870B7" stroke="#FFFFFF" stroke-width="2.5" />
+  <circle cx="48" cy="88" r="4" fill="#FFFFFF" />
+
+  <!-- Destination Pin -->
+  <path d="M254 4C244.6 4 237 11.6 237 21C237 32.8 254 47 254 47C254 47 271 32.8 271 21C271 11.6 263.4 4 254 4Z" fill="#0EA94B" stroke="#FFFFFF" stroke-width="2" />
+  <path d="M248 21L252 25L260.5 16.5" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+
