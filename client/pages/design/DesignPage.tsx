@@ -66,9 +66,9 @@ const CHAT_GROUPS: readonly (readonly ChatMessage[])[] = [
     { sender: "user", text: "קפה עם רחל" },
   ],
   [
-    { sender: "app", text: "בעוד 500 מטר פני ימינה" },
-    { sender: "user", text: "אפשר שוב?" },
     { sender: "app", text: "בעוד 400 מטר פני ימינה" },
+    { sender: "user", text: "אפשר שוב?" },
+    { sender: "app", text: "בעוד 300 מטר פני ימינה" },
   ],
   [
     { sender: "user", text: "נתקעתי" },
